@@ -60,7 +60,7 @@ import java.util.*;
                 patient.setPostCode(pasienReq.getPostCode());
                 patient.setSuburb(pasienReq.getSuburb());
                 patient.setState(pasienReq.getState());
-                patent = patientRepository.save(patent);
+                patient = patientRepository.save(patient);
                 return true;
             }
             return false;
