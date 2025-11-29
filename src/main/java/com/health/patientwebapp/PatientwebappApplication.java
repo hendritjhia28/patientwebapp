@@ -61,14 +61,19 @@ public class PatientwebappApplication {
       return patientService.getAllPatient();
     }
 
-	@GetMapping("/patien/{PID}")
-	public Patient getPatient(@PathVariable("PID") String PID) {
-		return patientService.getPatientById(PID);
-	}
+	//@GetMapping("/patien/{PID}")
+	//public Patient getPatient(@PathVariable("PID") String PID) {
+	//	return patientService.getPatientById(PID);
+	//}
 	
 	@DeleteMapping("/patien/{PID}")
    	public ResponseEntity<HttpStatus> deletePatient(@PathVariable("PID") String PID) {
-		Boolean b = patientService.deletePatientById(PID);
+		System.out.println("Delete ===" + PID);
+		Patient patient = patientService.getPatientById(PID);
+		Boolean b = false;
+		if(patient != null){
+			b = patientService.deletePatient(patient);
+		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 

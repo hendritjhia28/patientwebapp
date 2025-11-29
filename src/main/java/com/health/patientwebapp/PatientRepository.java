@@ -11,6 +11,4 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
 	List<Patient> findByFirstName(String firstName);
 
 	Patient findByPID(String PID);
-
-	void deletePatientByPID(String PID);
 }
