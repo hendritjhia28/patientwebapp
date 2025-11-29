@@ -61,7 +61,7 @@ public class PatientwebappApplication {
       return patientService.getAllPatient();
     }
 
-	@GetMapping("/patien]/{PID}")
+	@GetMapping("/patien/{PID}")
 	public Patient getPatient(@PathVariable("PID") String PID) {
 		return patientService.getPatientById(PID);
 	}
