@@ -36,16 +36,6 @@ public class PatientwebappApplication {
 		SpringApplication.run(PatientwebappApplication.class, args);
 	}
 
-	/*@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/patiens").allowedOrigins("http://localhost:9000");
-			}
-		};
-	}*/
-
 	@GetMapping("/check")
     public String hello(@RequestParam(value = "name", defaultValue = "OK") String name) {
       return String.format("200 %s!", name);
@@ -60,15 +50,9 @@ public class PatientwebappApplication {
 	public List<Patient> getAll(@RequestParam(value = "name", defaultValue = "World") String name) {
       return patientService.getAllPatient();
     }
-
-	//@GetMapping("/patien/{PID}")
-	//public Patient getPatient(@PathVariable("PID") String PID) {
-	//	return patientService.getPatientById(PID);
-	//}
 	
 	@DeleteMapping("/patien/{PID}")
    	public ResponseEntity<HttpStatus> deletePatient(@PathVariable("PID") String PID) {
-		System.out.println("Delete ===" + PID);
 		Patient patient = patientService.getPatientById(PID);
 		Boolean b = false;
 		if(patient != null){
@@ -77,9 +61,9 @@ public class PatientwebappApplication {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@PutMapping("/update")
- 	public ResponseEntity<Patient> update(@PathVariable String PID, @RequestBody PatientRequest patientReq) {
-        Boolean a = patientService.updatePatient(PID, patientReq);
+	@PutMapping("/patien/{PID}")
+ 	public ResponseEntity<Patient> updatePatient(@PathVariable("PID") String PID, @RequestBody PatientRequest patientReq) {
+		Boolean a = patientService.updatePatient(PID, patientReq);
         return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

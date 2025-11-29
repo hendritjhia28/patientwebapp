@@ -43,11 +43,6 @@ import java.util.*;
             return patientRepository.findByPID(id);
         }
 
-        public boolean deletePatientById(String PID){
-            patientRepository.deletePatientByPID(PID);
-            return true;
-        }
-
         public boolean updatePatient(String PID, PatientRequest pasienReq)
         {
             Patient patient = patientRepository.findByPID(PID);
